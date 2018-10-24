@@ -1,0 +1,27 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+<header>
+    <% include ../partials/header %>
+</header>
+    <main>
+        <div class="row">
+            <div class="col-md-12">
+                <% if(type=="success"){ %>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> New user has been added successfully.
+                    </div>
+                <% } else{ %>  
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> There is something wrong, please try again.
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

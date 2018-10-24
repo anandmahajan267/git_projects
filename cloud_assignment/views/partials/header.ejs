@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    
+        <div class="navbar-header">
+            
+
+            <ul class="nav navbar-nav">
+                <li <% if (page_code == 'home') { %> class="active" <% } %>>
+                    <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                </li>
+                <li <% if (page_code == 'employee') { %> class="active" <% } %>>
+                    <a href="/employees">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;Employees</a>
+                </li>
+                <li <% if (page_code == 'manager') { %> class="active" <% } %>>
+                    <a href="/managers">
+                    <span class="fa fa-user"></span>&nbsp;Managers</a>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+    </nav>
