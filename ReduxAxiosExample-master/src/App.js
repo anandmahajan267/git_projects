@@ -13,7 +13,7 @@ class App extends Component {
 
           <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" >Manage Posts</a>
+      <a class="nav-link" id="app_name" >Manage Posts</a>
     </li>
     
   </ul>
