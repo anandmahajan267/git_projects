@@ -3,7 +3,8 @@ import React from 'react';
 class NewPost extends React.Component {
   state = {
     title: '',
-    body: ''
+    body: '',
+    showLoader: 0
   };
 
   handleInputChange = e => {
@@ -15,10 +16,20 @@ class NewPost extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.title.trim() && this.state.body.trim()) {
+      this.setState((prevState, props) => ({
+        showLoader: 1
+      }));
       this.props.onAddPost(this.state);
       this.handleReset();
     }
   };
+
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    console.log(this.state);
+
+  }
 
   handleReset = () => {
     this.setState({
@@ -26,39 +37,40 @@ class NewPost extends React.Component {
       body: ''
     });
   };
-
   render() {
     return (
-      <div>
-          <form onSubmit={ this.handleSubmit }>
-          <div className="form-group">
+      <div className="row">
+        <div className="col-md-6 offset-3">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
               <input
-              type="text"
-              placeholder="Title"
-              className="form-control"
-              name="title"
-              onChange={ this.handleInputChange }
-              value={ this.state.title }
-            />
-          </div>
-          <div className="form-group">
-            <textarea
-              cols="19"
-              rows="8"
-              placeholder="Body"
-              className="form-control"
-              name="body"
-              onChange={ this.handleInputChange }
-              value={ this.state.body }>
-            </textarea>
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">Add Post</button>
-            <button type="button" className="btn btn-warning" onClick={ this.handleReset }>
-              Reset
+                type="text"
+                placeholder="Title"
+                className="form-control"
+                name="title"
+                onChange={this.handleInputChange}
+                value={this.state.title}
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                cols="19"
+                rows="8"
+                placeholder="Body"
+                className="form-control"
+                name="body"
+                onChange={this.handleInputChange}
+                value={this.state.body}>
+              </textarea>
+            </div>
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary">Add Post</button>
+              <button type="button" className="btn btn-warning ml-1" onClick={this.handleReset}>
+                Reset
             </button>
-          </div>
-        </form>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
